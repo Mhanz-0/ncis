@@ -175,4 +175,3 @@ class ScenarioRunner:
                 raise ValueError(
                     "Unknown scenario. Use: stealth, burst, custom, all"
                 )
-            
