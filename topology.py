@@ -1,5 +1,6 @@
 from mininet.log import setLogLevel, info
-from mininet.net import Mininet, CLI
+from mininet.net import Mininet
+from mininet.cli import CLI
 from mininet.node import OVSKernelSwitch
 from mininet.link import TCLink
 from mininet.node import RemoteController #Controller
@@ -83,7 +84,7 @@ class Environment(object):
             randHostNum = choice([i for i in range(len(self.list_hosts)) if i + 1 not in mask])
             return self.list_hosts[randHostNum]
         
-        if __name__ == '__main__':
+if __name__ == '__main__':
 
             setLogLevel('info')
             info('starting the environment\n')
