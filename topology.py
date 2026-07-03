@@ -9,6 +9,7 @@ from random import choice, randrange
 from time import sleep
 from threading import Thread
 from traffic_profiles import TrafficProfiles
+from scenarios import ScenarioRunner
 
 class Environment(object):
 
@@ -91,9 +92,14 @@ if __name__ == '__main__':
         setLogLevel('info')
         
         info('starting the environment\n')
+
         env = Environment()
+
         profiles = TrafficProfiles(env.net)
         env.profiles = profiles
+        
+        scenarios = ScenarioRunner(env.net, profiles)
+        env.scenarios = scenarios
 
         with open("/tmp/topologia.flag", "w") as f:
             f.write("ok")
@@ -102,6 +108,7 @@ if __name__ == '__main__':
         import builtins
         builtins.env = env
         builtins.profiles = profiles
-    
+        builtins.scenarios = scenarios
+
         info("*** Running CLI\n")
         CLI(env.net, script=None)
