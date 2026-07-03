@@ -53,7 +53,7 @@ class Environment(object):
 
         #connessione host-switch, con banda B_hs e latenza L_hs
         B_hs = 5 #Mbit/s
-        L_hs = '0.003ms' 
+        L_hs = '0.5ms' 
         self.net.addLink(self.h1, self.s2, bw=B_hs, delay=L_hs)
         self.net.addLink(self.h2, self.s1, bw=B_hs, delay=L_hs)
         self.net.addLink(self.h3, self.s1, bw=B_hs, delay=L_hs)
@@ -69,7 +69,7 @@ class Environment(object):
 
         #connessione switch-switch, con banda B_ss e latenza L_ss
         B_ss = 25 #Mbit/s
-        L_ss = '1.5ms'
+        L_ss = '2.5ms'
         self.s1_to_s2 = self.net.addLink(self.s1, self.s2, bw=B_ss, delay=L_ss)
         self.s2_to_s4 = self.net.addLink(self.s2, self.s4, bw=B_ss, delay=L_ss)
         self.s3_to_s4 = self.net.addLink(self.s3, self.s4, bw=B_ss, delay=L_ss)
@@ -112,3 +112,6 @@ if __name__ == '__main__':
 
         info("*** Running CLI\n")
         CLI(env.net, script=None)
+
+        info("*** Stopping network\n")
+        env.net.stop()

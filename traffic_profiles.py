@@ -216,6 +216,9 @@ class TrafficProfiles:
             for t in thr: #attendo la terminazione di tutti i thread che hanno lanciato gli attacchi
                 t.join()
 
+            for proc in list_cmd: #attendo la terminazione di tutti i processi lanciati per il traffico legittimo
+                proc.wait()
+
             for host, _ in attacks: #termino eventuali processi hping3 rimasti in esecuzione sugli host attaccanti
                 host.cmd("pkill -9 hping3")
                 
