@@ -50,29 +50,33 @@ class Environment(object):
 
         info("*** Link creation\n")
 
-        #connessione host-switch
-        self.net.addLink(self.h1, self.s2)
-        self.net.addLink(self.h2, self.s1)
-        self.net.addLink(self.h3, self.s1)
-        self.net.addLink(self.h4, self.s4)
-        self.net.addLink(self.h5, self.s3)
-        self.net.addLink(self.h6, self.s5)
-        self.net.addLink(self.h7, self.s5)
-        self.net.addLink(self.h8, self.s6)
-        self.net.addLink(self.h9, self.s9)
-        self.net.addLink(self.h10, self.s7)
-        self.net.addLink(self.h11, self.s7)
-        self.net.addLink(self.h12, self.s8)
+        #connessione host-switch, con banda B_hs e latenza L_hs
+        B_hs = 5 #Mbit/s
+        L_hs = '0.003ms' 
+        self.net.addLink(self.h1, self.s2, bw=B_hs, delay=L_hs)
+        self.net.addLink(self.h2, self.s1, bw=B_hs, delay=L_hs)
+        self.net.addLink(self.h3, self.s1, bw=B_hs, delay=L_hs)
+        self.net.addLink(self.h4, self.s4, bw=B_hs, delay=L_hs)
+        self.net.addLink(self.h5, self.s3, bw=B_hs, delay=L_hs)
+        self.net.addLink(self.h6, self.s5, bw=B_hs, delay=L_hs)
+        self.net.addLink(self.h7, self.s5, bw=B_hs, delay=L_hs)
+        self.net.addLink(self.h8, self.s6, bw=B_hs, delay=L_hs)
+        self.net.addLink(self.h9, self.s9, bw=B_hs, delay=L_hs)
+        self.net.addLink(self.h10, self.s7, bw=B_hs, delay=L_hs)
+        self.net.addLink(self.h11, self.s7, bw=B_hs, delay=L_hs)
+        self.net.addLink(self.h12, self.s8, bw=B_hs, delay=L_hs)
 
-        #connessione switch-switch
-        self.s1_to_s2 = self.net.addLink(self.s1, self.s2)
-        self.s2_to_s4 = self.net.addLink(self.s2, self.s4)
-        self.s3_to_s4 = self.net.addLink(self.s3, self.s4)
-        self.s4_to_s5 = self.net.addLink(self.s4, self.s5)
-        self.s4_to_s6 = self.net.addLink(self.s4, self.s6)
-        self.s6_to_s7 = self.net.addLink(self.s6, self.s7)
-        self.s6_to_s9 = self.net.addLink(self.s6, self.s9)
-        self.s7_to_s8 = self.net.addLink(self.s7, self.s8)
+        #connessione switch-switch, con banda B_ss e latenza L_ss
+        B_ss = 25 #Mbit/s
+        L_ss = '1.5ms'
+        self.s1_to_s2 = self.net.addLink(self.s1, self.s2, bw=B_ss, delay=L_ss)
+        self.s2_to_s4 = self.net.addLink(self.s2, self.s4, bw=B_ss, delay=L_ss)
+        self.s3_to_s4 = self.net.addLink(self.s3, self.s4, bw=B_ss, delay=L_ss)
+        self.s4_to_s5 = self.net.addLink(self.s4, self.s5, bw=B_ss, delay=L_ss)
+        self.s4_to_s6 = self.net.addLink(self.s4, self.s6, bw=B_ss, delay=L_ss)
+        self.s6_to_s7 = self.net.addLink(self.s6, self.s7, bw=B_ss, delay=L_ss)
+        self.s6_to_s9 = self.net.addLink(self.s6, self.s9, bw=B_ss, delay=L_ss)
+        self.s7_to_s8 = self.net.addLink(self.s7, self.s8, bw=B_ss, delay=L_ss)
 
         self.list_hosts = [self.h1,self.h2,self.h3,self.h4,self.h5,self.h6,self.h7,self.h8,self.h9,self.h10,self.h11,self.h12]
 
