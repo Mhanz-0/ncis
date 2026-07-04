@@ -48,7 +48,7 @@ class Mitigation(object):
         # Struttura:
         # {
         #   dpid: {
-        #       flow_id: [alarm_counter, AllarmState, total_blocks]
+        #       flow_id: [alarm_counter, AlarmState, total_blocks]
         #   }
         # }
         #flow_id comprende in_port, MAC sorgente e MAC destinazione
@@ -82,7 +82,7 @@ class Mitigation(object):
         if flow_id not in self.alarm_flow[dpid]:
             self.alarm_flow[dpid][flow_id] = [
                 0,                       # alarm_counter
-                AllarmState.ALLARM_OFF,  # stato allarme
+                AlarmState.ALLARM_OFF,  # stato allarme
                 0,                       # numero totale di blocchi
             ]
             self.logger.debug("Created alarm state for dpid=%s flow=%s", dpid, flow_id)
@@ -101,7 +101,7 @@ class Mitigation(object):
 
         if alarm_state[0] >= self.threshold:
             alarm_state[0] = self.threshold
-            alarm_state[1] = AllarmState.ALLARM_ON
+            alarm_state[1] = AlarmState.ALLARM_ON
 
             self.logger.warning(
                 RED + "[%.2f] Alarm ON for dpid=%s flow=%s counter=%d/%d" + RESET,
@@ -271,7 +271,7 @@ class Mitigation(object):
         self.locked_flows.discard(lock_key)  #rimozione del flusso dalla lista dei flussi bloccati 
 
         if dpid in self.alarm_flow and flow_id in self.alarm_flow[dpid]:
-            self.alarm_flow[dpid][flow_id][1] = AllarmState.ALLARM_OFF   #spengo l'allarme
+            self.alarm_flow[dpid][flow_id][1] = AlarmState.ALLARM_OFF   #spengo l'allarme
 
             # Dopo lo sblocco lasciamo il counter appena sotto soglia:
             # se il flow torna subito sospetto, basta un'altra rilevazione per ribloccarlo.
