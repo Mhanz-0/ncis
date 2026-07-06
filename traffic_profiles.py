@@ -77,11 +77,11 @@ class TrafficProfiles:
             self.h7.cmd("(iperf -s -t 95 -p 5003 | tee -a log/stealth/server/logTCPh7.txt) &")
             self.h9.cmd("(iperf -s -t 95 -u -p 5004 | tee -a log/stealth/server/logUDPh9.txt) &")
 
-            p1 = self.h3.popen("iperf -c 10.0.0.1 -b 2M -t 90 -i 1 -p 5002 | tee -a log/stealth/logh3.txt", shell=True)
+            p1 = self.h3.popen("iperf -u -c 10.0.0.1 -b 300K -t 90 -i 1 -p 5002 | tee -a log/stealth/logh3.txt", shell=True)
             list_cmd.append(p1)
-            p2 = self.h10.popen("iperf -c 10.0.0.7 -b 1M -t 90 -i 1 -p 5003 | tee -a log/stealth/logh10.txt", shell=True)
+            p2 = self.h10.popen("sleep 5; for i in $(seq 1 15); do iperf -c 10.0.0.7 -n 300K -p 5003 -i 1 | tee -a log/stealth/logh10.txt; sleep 3; done", shell=True)
             list_cmd.append(p2)
-            p3 = self.h5.popen("iperf -u -c 10.0.0.9 -b 1.5M -t 90 -i 1 -p 5004 | tee -a log/stealth/logh5.txt", shell=True)
+            p3 = self.h5.popen("iperf -u -c 10.0.0.9 -b 1.300K -t 90 -i 1 -p 5004 | tee -a log/stealth/logh5.txt", shell=True)
             list_cmd.append(p3)
 
            
@@ -136,14 +136,14 @@ class TrafficProfiles:
             sleep(2) #attendo 2 secondi prima di lanciare il traffico legittimo
 
             #i client sono tutti udp tranne h4, hanno una banda limitata a 300KBit/s e partono scaglionati
-            p1 = self.h2.popen("sleep 2; iperf -u -c 10.0.0.6 -b 300K -t 70 -i 1 -p 5001 | tee -a log/burst/logh2.txt", shell=True)
-            list_cmd.append(p1)
-            p2 = self.h3.popen("sleep 5; iperf -u -c 10.0.0.10 -b 300K -t 70 -i 1 -p 5002 | tee -a log/burst/logh3.txt", shell=True)
-            list_cmd.append(p2)
-            p3 = self.h4.popen("sleep 8; for i in $(seq 1 15); do iperf -c 10.0.0.7 -n 300K -p 5003 -i 1 | tee -a log/burst/logh4.txt; sleep 3; done", shell=True)
-            list_cmd.append(p3)
-            p4 = self.h5.popen("iperf -u -c 10.0.0.9 -b 300K -t 90 -i 1 -p 5004 | tee -a log/burst/logh5.txt", shell=True)
-            list_cmd.append(p4)
+            # p1 = self.h2.popen("sleep 2; iperf -u -c 10.0.0.6 -b 300K -t 70 -i 1 -p 5001 | tee -a log/burst/logh2.txt", shell=True)
+            # list_cmd.append(p1)
+            # p2 = self.h3.popen("sleep 5; iperf -u -c 10.0.0.10 -b 300K -t 70 -i 1 -p 5002 | tee -a log/burst/logh3.txt", shell=True)
+            # list_cmd.append(p2)
+            # p3 = self.h4.popen("sleep 8; for i in $(seq 1 15); do iperf -c 10.0.0.7 -n 300K -p 5003 -i 1 | tee -a log/burst/logh4.txt; sleep 3; done", shell=True)
+            # list_cmd.append(p3)
+            # p4 = self.h5.popen("iperf -u -c 10.0.0.9 -b 300K -t 90 -i 1 -p 5004 | tee -a log/burst/logh5.txt", shell=True)
+            # list_cmd.append(p4)
 
             sleep(2)
 
