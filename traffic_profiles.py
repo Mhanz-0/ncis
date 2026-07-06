@@ -127,6 +127,7 @@ class TrafficProfiles:
             self.h6.cmd("timeout 130s python3 -m http.server 80 &") #apro un server http sul port 80 di h6 per 130 secondi
             
             #traffico di base tcp e udp tra host legittimi
+
             self.h6.cmd("(iperf -t 120 -s | tee -a log/burst/server/logTCPh6.txt) &") 
             self.h10.cmd("(iperf -s -t 120 -p 5002 | tee -a log/burst/server/logTCPh10.txt) &") 
             self.h7.cmd("(iperf -s -t 120 -p 5003 | tee -a log/burst/server/logTCPh7.txt) &")
@@ -134,16 +135,17 @@ class TrafficProfiles:
        
             sleep(2) #attendo 2 secondi prima di lanciare il traffico legittimo
 
-            p1 = self.h2.popen("iperf -c 10.0.0.6 -b 2M -t 90 -i 1 -p 5001 | tee -a log/burst/logh2.txt", shell=True)
+            #i client sono tutti udp tranne h4, hanno una banda limitata a 300KBit/s e partono scaglionati
+            p1 = self.h2.popen("sleep 2; iperf -u -c 10.0.0.6 -b 300K -t 70 -i 1 -p 5001 | tee -a log/burst/logh2.txt", shell=True)
             list_cmd.append(p1)
-            p2 = self.h3.popen("iperf -c 10.0.0.10 -b 2M -t 90 -i 1 -p 5002 | tee -a log/burst/logh3.txt", shell=True)
+            p2 = self.h3.popen("sleep 5; iperf -u -c 10.0.0.10 -b 300K -t 70 -i 1 -p 5002 | tee -a log/burst/logh3.txt", shell=True)
             list_cmd.append(p2)
-            p3 = self.h4.popen("iperf -c 10.0.0.7 -b 1M -t 90 -i 1 -p 5003 | tee -a log/burst/logh4.txt", shell=True)
+            p3 = self.h4.popen("sleep 8; for i in $(seq 1 15); do iperf -c 10.0.0.7 -n 300K -p 5003 -i 1 | tee -a log/burst/logh4.txt; sleep 3; done", shell=True)
             list_cmd.append(p3)
-            p4 = self.h5.popen("iperf -u -c 10.0.0.9 -b 1M -t 90 -i 1 -p 5004 | tee -a log/burst/logh5.txt", shell=True)
+            p4 = self.h5.popen("iperf -u -c 10.0.0.9 -b 300K -t 90 -i 1 -p 5004 | tee -a log/burst/logh5.txt", shell=True)
             list_cmd.append(p4)
 
-            sleep(8)
+            sleep(2)
 
             while rep < self.max_attack_burst: #ripeto l'attacco per un numero di volte pari a self.max_attack_burst
                 
@@ -152,12 +154,12 @@ class TrafficProfiles:
                 print(
                         f"Starting burst attack {rep + 1}/{self.max_attack_burst}: "
                         f"attacker={self.h1.name}, victim={self.h6.name}, "
-                        f"protocol=UDP, duration=2s, next_pause={wait_time}s",
+                        f"protocol=UDP, duration=20s, next_pause={wait_time}s",
                         flush=True
                     )
 
-                # lancio l'attacco verso h6 con pacchetti di 3000 byte e flood mode, per un tempo di 2 secondi
-                self.h1.cmd("timeout 2s hping3 -2 -V --flood -p 80 -d 3000 10.0.0.6 >> log/burst/logAttack.txt")     
+                # lancio l'attacco verso h6 con pacchetti di 3000 byte e flood mode, per un tempo di 20 secondi
+                self.h1.cmd("timeout 20s hping3 -2 -V --flood -p 80 -d 3000 10.0.0.6 >> log/burst/logAttack.txt")     
                 sleep(wait_time) #attesa prima di lanciare un nuovo attacco
                 self.h1.cmd("pkill -9 hping3") #termino eventuali processi hping3 rimasti in esecuzione
                 rep += 1 #incremento il contatore di ripetizioni
