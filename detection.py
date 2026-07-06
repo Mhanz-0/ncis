@@ -7,6 +7,9 @@ GREEN = "\033[92m"
 YELLOW = "\033[93m"
 RESET = "\033[0m"
 
+#soglia minima per evitare troppi falsi positivi
+MIN_RATE = 100_000  # byte/s, circa 800 Kbit/s
+
 #risultato della detection sul singolo flusso 
 class FlowState(Enum):
 
@@ -102,7 +105,7 @@ class Detection(object):
         if threshold_value is None:
             return FlowState.FLOW_NO_DETECTION
 
-        if flow_value > threshold_value: 
+        if flow_value > max(threshold_value, MIN_RATE): 
             self.logger.warning(
                 RED + "Flow detected: value=%.3f threshold=%.3f mode=%s" + RESET,
                 flow_value,
