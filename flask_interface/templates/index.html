@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>SDN Security Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #f8f9fa; }
+        .alert-box { max-height: 500px; overflow-y: auto; background-color: #1e1e1e; color: #ffca28; font-family: monospace; padding: 15px; border-radius: 5px; }
+        .log-red { color: #ff4d4d; font-weight: bold; }
+        .log-green { color: #4CAF50; font-weight: bold; }
+        .policy-box { max-height: 250px; overflow-y: auto; background-color: #ffffff; border-radius: 5px; padding: 5px; font-size: 0.8rem; border: 1px solid #dee2e6; }
+        .flow-details { line-height: 1.3; }
+    </style>
+</head>
+<body>
+
+<div class="container-fluid mt-4 px-4">
+    <h2 class="mb-4 text-center">Dashboard Controller SDN</h2>
+
+    <div class="row">
+        <div class="col-md-3">
+            
+            <div class="card mb-3 shadow-sm border-primary">
+                <div class="card-header bg-primary text-white font-weight-bold">Analisi Rete & Soglie</div>
+                <div class="card-body" id="agg-stats-box">
+                    <span class="text-muted">In attesa di dati...</span>
+                </div>
+            </div>
+
+            <div class="card mb-3 shadow-sm border-dark">
+                <div class="card-header bg-dark text-white font-weight-bold">Policy Attive</div>
+                <div class="card-body">
+                    <h6 class="text-success border-bottom pb-1">Whitelist:</h6>
+                    <div id="whitelist-box" class="policy-box mb-3"></div>
+                    
+                    <h6 class="text-danger border-bottom pb-1">Blacklist:</h6>
+                    <div id="blacklist-box" class="policy-box"></div>
+                </div>
+            </div>
+
+            <div class="card mb-3 shadow-sm border-warning">
+                <div class="card-header bg-warning text-dark font-weight-bold">Aggiungi Regola Dinamica</div>
+                <div class="card-body">
+                    <form id="policy-form">
+                        <div class="mb-2">
+                            <label class="form-label" style="font-size: 0.8rem;">In Port</label>
+                            <input type="number" id="in_port" class="form-control form-control-sm" placeholder="es. 1" min="0" required>
+                        </div>
+                        <div class="mb-2">
+                            <label class="form-label" style="font-size: 0.8rem;">MAC Sorgente</label>
+                            <input type="text" id="eth_src" class="form-control form-control-sm" placeholder="00:00:00:00:00:01" required>
+                        </div>
+                        <div class="mb-2">
+                            <label class="form-label" style="font-size: 0.8rem;">MAC Destinazione</label>
+                            <input type="text" id="eth_dst" class="form-control form-control-sm" placeholder="00:00:00:00:00:02" required>
+                        </div>
+                        <div class="mb-2">
+                            <label class="form-label" style="font-size: 0.8rem;">Motivazione (Opzionale)</label>
+                            <input type="text" id="reason" class="form-control form-control-sm" placeholder="Es. Test autorizzato">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" style="font-size: 0.8rem;">Aggiungi alla lista:</label>
+                            <select id="list_type" class="form-select form-select-sm">
+                                <option value="whitelist">Whitelist (Consenti)</option>
+                                <option value="blacklist">Blacklist (Blocca)</option>
+                            </select>
+                        </div>
+                        <button type="button" class="btn btn-dark btn-sm w-100" onclick="submitPolicy()">Applica Regola</button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-md-5">
+            <div class="card shadow-sm border-info">
+                <div class="card-header bg-info text-white font-weight-bold">Flussi di Forwarding (Priority 1)</div>
+                <div class="card-body p-0">
+                    <table class="table table-striped table-hover m-0" style="font-size: 0.9rem;">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>In Port</th>
+                                <th>Src MAC</th>
+                                <th>Dst MAC</th>
+                                <th>Flow Rate (B/s)</th>
+                                <th>Orario</th>
+                            </tr>
+                        </thead>
+                        <tbody id="stats-table-body">
+                            </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card shadow-sm border-danger">
+                <div class="card-header bg-danger text-white font-weight-bold">Security Alerts & Mitigation Logs</div>
+                <div class="card-body p-0">
+                    <div class="alert-box" id="alerts-box">
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // --- FUNZIONI DI AGGIORNAMENTO DATI IN TEMPO REALE --- //
+
+    function updateDashboard() {
+        
+        // --- 1. Aggiornamento Tabella Flussi ---
+        fetch('/api/stats')
+            .then(res => res.json())
+            .then(data => {
+                let tableBody = '';
+                let now = new Date();
+                let timeString = now.toLocaleTimeString('it-IT');
+
+                data.forEach(flow => {
+                    let rate = parseFloat(flow.flow_rate);
+                    let rowClass = rate > 100000 ? 'table-danger' : ''; // Soglia visiva generica per rosso
+                    tableBody += `<tr class="${rowClass}">
+                        <td>${flow.in_port}</td>
+                        <td>${flow.eth_src}</td>
+                        <td>${flow.eth_dst}</td>
+                        <td><strong>${rate.toFixed(2)}</strong></td>
+                        <td><span class="badge bg-secondary">${timeString}</span></td>
+                    </tr>`;
+                });
+                document.getElementById('stats-table-body').innerHTML = tableBody;
+            }).catch(err => console.error(err));
+
+        // --- 2. Aggiornamento Statistiche e Soglie Adattive ---
+        fetch('/api/agg_stats')
+            .then(res => res.json())
+            .then(data => {
+                if(data.stat) {
+                    let avg = parseFloat(data.average);
+                    let std_dev = parseFloat(data.std_dev);
+                    let p75 = parseFloat(data.percentile75);
+                    let iqr = parseFloat(data.iqr);
+
+                    // Calcolo delle soglie
+                    let thresh_perc = p75 + (1.5 * iqr);
+                    let thresh_avg = avg + (2.0 * std_dev);
+
+                    document.getElementById('agg-stats-box').innerHTML = `
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <strong>Flussi Attivi:</strong> 
+                            <span class="badge bg-secondary fs-6">${data.count}</span>
+                        </div>
+                        
+                        <h6 class="text-muted border-bottom pb-1 mt-3" style="font-size: 0.75rem; text-transform: uppercase;">Parametri Statistici</h6>
+                        <div style="font-size: 0.85rem;">
+                            <div class="d-flex justify-content-between"><span>Media:</span> <strong>${avg.toFixed(2)} B/s</strong></div>
+                            <div class="d-flex justify-content-between"><span>Dev. Std:</span> <strong>${std_dev.toFixed(2)} B/s</strong></div>
+                            <div class="d-flex justify-content-between"><span>Percentile 75:</span> <strong>${p75.toFixed(2)} B/s</strong></div>
+                            <div class="d-flex justify-content-between"><span>IQR:</span> <strong>${iqr.toFixed(2)} B/s</strong></div>
+                        </div>
+
+                        <h6 class="text-muted border-bottom pb-1 mt-3" style="font-size: 0.75rem; text-transform: uppercase;">Soglie Adattive Calcolate</h6>
+                        
+                        <div class="p-2 mb-2 bg-light border rounded border-success border-opacity-50">
+                            <div style="font-size: 0.75rem;" class="text-success fw-bold">MODALITÀ PERCENTILE</div>
+                            <div style="font-size: 0.7rem;" class="text-muted">P75 + (1.5 * IQR)</div>
+                            <div class="fs-6 fw-bold mt-1">${thresh_perc.toFixed(2)} <span style="font-size: 0.7rem;">B/s</span></div>
+                        </div>
+
+                        <div class="p-2 bg-light border rounded border-primary border-opacity-50">
+                            <div style="font-size: 0.75rem;" class="text-primary fw-bold">MODALITÀ MEDIA & STD</div>
+                            <div style="font-size: 0.7rem;" class="text-muted">Media + (2 * Dev_Std)</div>
+                            <div class="fs-6 fw-bold mt-1">${thresh_avg.toFixed(2)} <span style="font-size: 0.7rem;">B/s</span></div>
+                        </div>
+                    `;
+                }
+            }).catch(err => console.error(err));
+
+        // --- 3. Aggiornamento Policy (Whitelist e Blacklist) ---
+        fetch('/api/policies')
+            .then(res => res.json())
+            .then(data => {
+                
+                const formatPolicyList = (policyObj, badgeColor, listType) => {
+                    const keys = Object.keys(policyObj);
+                    
+                    if (keys.length === 0) {
+                        return '<div class="text-muted font-italic mb-2 p-2">Nessuna regola presente.</div>';
+                    }
+                    
+                    let html = '<ul class="list-group list-group-flush mb-0">';
+                    keys.forEach(flowKey => {
+                        let ruleData = policyObj[flowKey];
+                        let status = ruleData.enabled ? 'Attiva' : 'Disabilitata';
+                        let reason = ruleData.reason ? ruleData.reason : 'Nessuna motivazione';
+                        
+                        let humanReadableFlow = flowKey;
+                        // Estrazione tramite regex: (1, 'mac1', 'mac2')
+                        const regex = /\((\d+),\s*'([^']+)',\s*'([^']+)'\)/;
+                        const match = flowKey.match(regex);
+                        if (match) {
+                            humanReadableFlow = `
+                                <strong>Porta:</strong> <span class="text-primary">${match[1]}</span> <br>
+                                <strong>Da:</strong> <span class="text-primary">${match[2]}</span> <br>
+                                <strong>A:</strong> <span class="text-primary">${match[3]}</span>
+                            `;
+                        }
+
+                        const safeFlowKey = flowKey.replace(/'/g, "\\'");
+
+                        html += `
+                            <li class="list-group-item bg-transparent px-2 py-2 border-bottom position-relative">
+                                <button class="btn btn-outline-danger btn-sm position-absolute top-0 end-0 mt-2 me-2" 
+                                        style="padding: 0.1rem 0.4rem; font-size: 0.7rem; font-weight: bold;" 
+                                        onclick="deletePolicy('${listType}', '${safeFlowKey}')" 
+                                        title="Elimina Regola">X</button>
+                                
+                                <div class="text-dark flow-details" style="font-size: 0.85rem;">${humanReadableFlow}</div>
+                                <div class="text-muted mt-2 border-top pt-1" style="font-size: 0.75rem;"><strong>Motivo:</strong> ${reason}</div>
+                                <span class="badge ${badgeColor} mt-1">${status}</span>
+                            </li>
+                        `;
+                    });
+                    html += '</ul>';
+                    return html;
+                };
+
+                document.getElementById('whitelist-box').innerHTML = formatPolicyList(data.whitelist, 'bg-success', 'whitelist');
+                document.getElementById('blacklist-box').innerHTML = formatPolicyList(data.blacklist, 'bg-danger', 'blacklist');
+            }).catch(err => console.error(err));
+
+        // --- 4. Aggiornamento Log Sicurezza ---
+        fetch('/api/alerts')
+            .then(res => res.json())
+            .then(data => {
+                let alertsHtml = data.alerts.map(line => {
+                    if(line.includes("Alarm ON") || line.includes("Blocked") || line.includes("BLACKLIST")) return `<span class="log-red">${line}</span>`;
+                    if(line.includes("Unlocked") || line.includes("WHITELIST")) return `<span class="log-green">${line}</span>`;
+                    return line;
+                }).join('<br>');
+                document.getElementById('alerts-box').innerHTML = alertsHtml;
+            }).catch(err => console.error(err));
+    }
+
+    // --- AGGIUNTA REGOLA (Con controllo porta >= 0) ---
+    function submitPolicy() {
+        const in_port = document.getElementById('in_port').value;
+        const eth_src = document.getElementById('eth_src').value;
+        const eth_dst = document.getElementById('eth_dst').value;
+        const reason = document.getElementById('reason').value;
+        const list_type = document.getElementById('list_type').value;
+
+        if(!in_port || !eth_src || !eth_dst) {
+            alert("Compila tutti i campi richiesti!");
+            return;
+        }
+
+        // Controllo lato logica Javascript (ulteriore sicurezza oltre all'HTML)
+        if(parseInt(in_port) < 0) {
+            alert("Errore: Il numero della porta non può essere negativo!");
+            return;
+        }
+
+        fetch('/api/add_policy', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ in_port, eth_src, eth_dst, reason, list_type })
+        })
+        .then(response => response.json())
+        .then(result => {
+            if(result.status === "success") {
+                document.getElementById('policy-form').reset();
+                updateDashboard(); 
+            } else {
+                alert("Errore: " + result.message);
+            }
+        });
+    }
+
+    // --- ELIMINAZIONE REGOLA ---
+    function deletePolicy(list_type, flow_key) {
+        if(!confirm("Sei sicuro di voler eliminare questa regola?")) return;
+
+        fetch('/api/delete_policy', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ list_type, flow_key })
+        })
+        .then(response => response.json())
+        .then(result => {
+            if(result.status === "success") {
+                updateDashboard(); // Ricarica le liste immediatamente
+            } else {
+                alert("Errore durante l'eliminazione: " + result.message);
+            }
+        }).catch(err => console.error("Impossibile comunicare con il server.", err));
+    }
+
+    // Esecuzione ciclica ogni 1 secondo
+    setInterval(updateDashboard, 1000);
+    updateDashboard();
+
+</script>
+
+</body>
+</html>
