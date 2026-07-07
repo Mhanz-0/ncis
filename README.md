@@ -1,6 +1,6 @@
 Prerequisiti: 
 
--sudo apt install python3-matplotlib
+-python3 -m pip install --no-cache-dir numpy pandas matplotlib
 
 -pip3 install flask
 
