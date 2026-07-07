@@ -1,5 +1,9 @@
 Prerequisiti: 
+
 -sudo apt install python3-matplotlib
+
+-pip3 install flask
+
 
 Istruzioni per l'esecuzione:
 
