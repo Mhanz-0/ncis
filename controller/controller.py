@@ -278,6 +278,18 @@ class MainController(app_manager.RyuApp):
         #calcolo la soglia adattiva tramite percentile e intervallo interquartile (IQR) oppure media e deviazione standard
         self._set_adaptive_threshold(aggregated_stats)
 
+        #salvo la soglia realmente usata dalla detection
+        threshold_value = self.detection.get_threshold_value()
+
+        self.statistics.append_aggregated_history(
+            aggregated=aggregated_stats,
+            threshold_value=threshold_value,
+            detection_mode=self.detection.mode,
+        )
+
+        #aggiorno il grafico delle statistiche aggregate
+        self.statistics.plot_aggregated_stats(STAT_TO_AGGREGATE)
+
         #per ogni flusso, applico detection e mitigation se necessario
         for index in list(self.statistics.flow_stats.index):
             dpid = index[0]
