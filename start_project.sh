@@ -84,6 +84,9 @@ SAFE_MODE="${DETECTION_MODE//&/_}"
 BASELINE_LOG="log/ryu_simple_switch13_${TIMESTAMP}.log"
 CUSTOM_LOG="log/ryu_controller_${SAFE_MODE}_${TIMESTAMP}.log"
 
+FLASK_LOG="log/flask_dashboard_${TIMESTAMP}.log"
+FLASK_URL="http://127.0.0.1:5000"
+
 # ==========================
 # Avvio controller baseline
 # ==========================
@@ -125,18 +128,81 @@ echo "[OK] MainController avviato. Log: $CUSTOM_LOG"
 echo ""
 
 # ==========================
+# Avvio dashboard Flask
+# ==========================
+
+echo "[START] Starting Flask dashboard on port 5000..."
+
+if [ ! -f "flaskInterface/app.py" ]; then
+    echo "[ERROR] flaskInterface/app.py non trovato."
+    echo "Controlla di avere questa struttura:"
+    echo "flaskInterface/app.py"
+    echo "flaskInterface/templates/index.html"
+    kill "$BASELINE_PID" 2>/dev/null || true
+    kill "$CUSTOM_PID" 2>/dev/null || true
+    exit 1
+fi
+
+if [ ! -f "flaskInterface/templates/index.html" ]; then
+    echo "[ERROR] flaskInterface/templates/index.html non trovato."
+    echo "Flask cerca index.html dentro flaskInterface/templates/"
+    kill "$BASELINE_PID" 2>/dev/null || true
+    kill "$CUSTOM_PID" 2>/dev/null || true
+    exit 1
+fi
+
+cd "$PROJECT_DIR/dashboard"
+
+python3 -m flask --app app run --host 0.0.0.0 --port 5000 > "$PROJECT_DIR/$FLASK_LOG" 2>&1 &
+FLASK_PID=$!
+
+cd "$PROJECT_DIR"
+
+sleep 2
+
+if ! kill -0 "$FLASK_PID" 2>/dev/null; then
+    echo "[ERROR] Flask dashboard non è partita correttamente."
+    echo "Log:"
+    cat "$FLASK_LOG"
+    kill "$BASELINE_PID" 2>/dev/null || true
+    kill "$CUSTOM_PID" 2>/dev/null || true
+    exit 1
+fi
+
+echo "[OK] Flask dashboard avviata. Log: $FLASK_LOG"
+echo "[OPEN] Opening Firefox at $FLASK_URL"
+
+if command -v firefox >/dev/null 2>&1; then
+    firefox "$FLASK_URL" >/dev/null 2>&1 &
+elif command -v xdg-open >/dev/null 2>&1; then
+    xdg-open "$FLASK_URL" >/dev/null 2>&1 &
+else
+    echo "[WARN] Firefox/xdg-open non trovato. Apri manualmente: $FLASK_URL"
+fi
+
+echo ""
+
+# ==========================
 # Cleanup finale automatico
 # ==========================
 
 cleanup() {
     echo ""
-    echo "[STOP] Stopping controllers..."
+    echo "[STOP] Stopping controllers and dashboard..."
 
     kill "$BASELINE_PID" 2>/dev/null || true
     kill "$CUSTOM_PID" 2>/dev/null || true
 
+    if [ -n "${FLASK_PID:-}" ]; then
+        kill "$FLASK_PID" 2>/dev/null || true
+    fi
+
     wait "$BASELINE_PID" 2>/dev/null || true
     wait "$CUSTOM_PID" 2>/dev/null || true
+
+    if [ -n "${FLASK_PID:-}" ]; then
+        wait "$FLASK_PID" 2>/dev/null || true
+    fi
 
     echo "[STOP] Cleaning Mininet..."
     sudo mn -c > /dev/null 2>&1 || true
