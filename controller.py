@@ -15,8 +15,17 @@ from components.monitoring import Monitoring
 from components.policy import Policy
 from components.statistics import Statistics, StatisticsState
 
+#codici ANSI utili per colorare le stampe nel terminale
+RED = "\033[91m"
+GREEN = "\033[92m"
+YELLOW = "\033[93m"
+RESET = "\033[0m"
+
 MONITOR_INTERVAL = 1.0
 STAT_TO_AGGREGATE = "flow_rate"
+
+#la detection mode deve essere specificata da terminale prima dell'avvio del controller, altrimenti sarà settata di default a "percentile"
+DETECTION_MODE = os.environ.get("DETECTION_MODE", "percentile")
 
 #controller principale per monitoring, detection e mitigation degli attacchi
 #NON gestisce la parte di routing che è demandata al controller simple_switch13
@@ -33,7 +42,7 @@ class MainController(app_manager.RyuApp):
         self.monitoring = Monitoring(self.logger)
         self.mitigation = Mitigation()
         self.statistics = Statistics(self.logger)
-        self.detection = Detection(self.logger, mode = "percentile")
+        self.detection = Detection(self.logger, mode = DETECTION_MODE)
         self.policy = Policy(self.logger)
 
         #salva i datapath degli switch connessi al controller
@@ -206,6 +215,50 @@ class MainController(app_manager.RyuApp):
         self.dpids_received.clear()
         self.received_non_empty_stats = False
 
+    def _set_adaptive_threshold(self, aggregated_stats):
+        """
+        Imposta i parametri della soglia adattiva in base alla modalità scelta.
+        La soglia vera e propria viene poi calcolata dentro Detection._compute_threshold_value().
+        """
+
+        mode = self.detection.mode
+
+        if mode == "percentile":
+            percentile = aggregated_stats["percentile"]
+            iqr = aggregated_stats["iqr"]
+
+            self.detection.setThreshold(percentile, iqr)
+
+            self.logger.info(
+                "Adaptive threshold mode=percentile: flow_rate > percentile75 + 1.5 * IQR = %.3f + 1.5 * %.3f",
+                percentile,
+                iqr,
+            )
+            return
+
+        if mode == "average&std_dev":
+            average = aggregated_stats["average"]
+            std_dev = aggregated_stats["std_dev"]
+
+            self.detection.setThreshold(average, std_dev)
+
+            self.logger.info(
+                "Adaptive threshold mode=average&std_dev: flow_rate > average + 2 * std_dev = %.3f + 2 * %.3f",
+                average,
+                std_dev,
+            )
+            return
+
+        #se non è riconosciuta la modalità, si applica "percentile" di default
+        self.logger.warning(
+            RED + "Detection mode %s non gestita nel controller: uso percentile" + RESET,
+            mode,
+        )
+
+        percentile = aggregated_stats["percentile"]
+        iqr = aggregated_stats["iqr"]
+        self.detection.setThreshold(percentile, iqr)
+
     def _process_detection_round(self):
         
         """
@@ -222,16 +275,8 @@ class MainController(app_manager.RyuApp):
         aggregated_stats = self.statistics.compute_aggregated_dpid_stats(STAT_TO_AGGREGATE)
         self.statistics.display_flow_stats()
 
-        #calcolo la soglia adattiva tramite percentile e intervallo interquartile (IQR)
-        percentile = aggregated_stats["percentile"]
-        iqr = aggregated_stats["iqr"]
-
-        self.detection.setThreshold(percentile, iqr)
-        self.logger.info(
-            "Adaptive threshold: flow_rate > percentile75 + 1.5 * IQR = %.3f + 1.5 * %.3f",
-            percentile,
-            iqr,
-        )
+        #calcolo la soglia adattiva tramite percentile e intervallo interquartile (IQR) oppure media e deviazione standard
+        self._set_adaptive_threshold(aggregated_stats)
 
         #per ogni flusso, applico detection e mitigation se necessario
         for index in list(self.statistics.flow_stats.index):
@@ -275,8 +320,16 @@ class MainController(app_manager.RyuApp):
 
         detected = self.detection.dataDetection(current_value) #controllo se il flow rate corrente supera la soglia adattiva
 
-        if detected == FlowState.FLOW_DETECTED or black_listed == ListState.LISTED:
-            #controllo se il flusso era già in stato di allarme e poi incremento
+        #se il flusso è in blacklist, lo blocco subito 
+        if black_listed == ListState.LISTED:
+            datapath = self.datapaths.get(dpid)
+            if datapath:
+                self.mitigation.lock_flow(datapath, flow_id)
+            return
+
+        #controllo se il flusso era già in stato di allarme e poi incremento
+        if detected == FlowState.FLOW_DETECTED:
+            
             was_alarm_on = (
                 self.mitigation.alarm_flow[dpid][flow_id][1] == AlarmState.ALLARM_ON
             )
