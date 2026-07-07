@@ -1,4 +1,5 @@
 Prerequisiti: 
+-sudo apt install python3-matplotlib
 
 Istruzioni per l'esecuzione:
 
