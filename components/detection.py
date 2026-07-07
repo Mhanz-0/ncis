@@ -53,6 +53,11 @@ class Detection(object):
 
         self.threshold = threshold
 
+    #restituisce la soglia calcolata dalla detection, a seconda della modalità scelta
+    def get_threshold_value(self):
+       
+        return self._compute_threshold_value()
+
     #converte un valore in float
     def _to_float(self, value, default=0.0):
         

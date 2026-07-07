@@ -5,7 +5,9 @@ from enum import Enum
 from time import time
 
 import pandas as pd
-
+import matplotlib
+matplotlib.use("Agg")
+import matplotlib.pyplot as plt
 
 # codici ANSI utili per colorare le stampe nel terminale
 RED = "\033[91m"
@@ -49,12 +51,19 @@ class Statistics(object):
         logger,
         statistics_path="jsonFile/statistics.json",
         aggregated_path="jsonFile/aggregatedStats.json",
+        aggregated_history_path="jsonFile/aggregatedStatsHistory.json",
+        plot_dir="plots",
     ):
         self.logger = logger
         self.statistics_path = statistics_path
         self.aggregated_path = aggregated_path
+        self.aggregated_history_path = aggregated_history_path
+        self.plot_dir = plot_dir
 
         os.makedirs("jsonFile", exist_ok=True)
+        os.makedirs(self.plot_dir, exist_ok=True)
+
+        self.aggregated_history = []
 
         self.flow_stats = pd.DataFrame(
             columns=self.COLUMNS,
@@ -236,6 +245,23 @@ class Statistics(object):
 
         return aggregated
 
+    def append_aggregated_history(self, aggregated, threshold_value=None, detection_mode=None):
+        """
+        Salva nel tempo le statistiche aggregate.
+        threshold_value è la soglia realmente usata dal modulo Detection.
+        """
+
+        record = dict(aggregated)
+
+        if threshold_value is not None:
+            record["threshold"] = self._to_json_number(threshold_value)
+
+        if detection_mode is not None:
+            record["detection_mode"] = detection_mode
+
+        self.aggregated_history.append(record)
+        self._write_json(self.aggregated_history_path, self.aggregated_history)
+
     def display_flow_stats(self):
         """
         Salva le statistiche correnti su jsonFile/statistics.json e stampa un riepilogo nei log.
@@ -267,6 +293,58 @@ class Statistics(object):
                 record["byte_diff"],
                 record["flow_rate"],
             )
+
+    def plot_aggregated_stats(self, stat_to_plot="flow_rate"):
+        """
+        Genera un grafico PNG delle statistiche aggregate nel tempo.
+        """
+
+        if not self.aggregated_history:
+            self.logger.info("No aggregated history available for plotting")
+            return None
+
+        times = []
+        averages = []
+        max_values = []
+        percentiles = []
+        thresholds = []
+
+        for item in self.aggregated_history:
+            if item.get("stat") != stat_to_plot:
+                continue
+
+            times.append(item.get("computed_at", 0.0))
+            averages.append(item.get("average", 0.0))
+            max_values.append(item.get("max", 0.0))
+            percentiles.append(item.get("percentile75", item.get("percentile", 0.0)))
+            thresholds.append(item.get("threshold", 0.0))
+
+        if not times:
+            self.logger.info("No data available for stat %s", stat_to_plot)
+            return None
+
+        output_path = os.path.join(self.plot_dir, f"aggregated_{stat_to_plot}.png")
+
+        plt.figure(figsize=(10, 5))
+
+        plt.plot(times, averages, label="Average flow rate")
+        plt.plot(times, max_values, label="Max flow rate")
+        plt.plot(times, percentiles, label="75th percentile")
+        plt.plot(times, thresholds, label="Detection threshold")
+
+        plt.xlabel("Time from controller start [s]")
+        plt.ylabel("Flow rate [B/s]")
+        plt.title("Aggregated flow statistics over time")
+        plt.grid(True)
+        plt.legend()
+        plt.tight_layout()
+
+        plt.savefig(output_path, dpi=150)
+        plt.close()
+
+        self.logger.info("Aggregated statistics plot saved to %s", output_path)
+
+        return output_path
 
     def _extract_flow_id(self, raw_flow_stats):
         """
