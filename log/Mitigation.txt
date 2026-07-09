@@ -1,0 +1,336 @@
+[93m[55.56] Suspicious flow on dpid=6 flow=(2, '00:00:00:00:00:05', '00:00:00:00:00:09') counter=1/3[0m
+[93m[56.96] Suspicious flow on dpid=5 flow=(3, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=1/3[0m
+[93m[56.96] Suspicious flow on dpid=2 flow=(1, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=1/3[0m
+[93m[56.97] Suspicious flow on dpid=4 flow=(2, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=1/3[0m
+[93m[58.47] Suspicious flow on dpid=5 flow=(3, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=2/3[0m
+[93m[58.47] Suspicious flow on dpid=2 flow=(1, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=2/3[0m
+[93m[58.48] Suspicious flow on dpid=4 flow=(2, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=2/3[0m
+[91m[59.80] Alarm ON for dpid=5 flow=(3, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=3/3[0m
+[91m[59.80] Blocked flow on dpid=5 flow=(3, '00:00:00:00:00:01', '00:00:00:00:00:06') for 4 seconds[0m
+[91m[59.80] Alarm ON for dpid=2 flow=(1, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=3/3[0m
+[91m[59.80] Blocked flow on dpid=2 flow=(1, '00:00:00:00:00:01', '00:00:00:00:00:06') for 4 seconds[0m
+[91m[59.81] Alarm ON for dpid=4 flow=(2, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=3/3[0m
+[91m[59.81] Blocked flow on dpid=4 flow=(2, '00:00:00:00:00:01', '00:00:00:00:00:06') for 4 seconds[0m
+[91m[61.22] Alarm ON for dpid=5 flow=(3, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=3/3[0m
+[91m[61.22] Alarm ON for dpid=2 flow=(1, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=3/3[0m
+[91m[61.23] Alarm ON for dpid=4 flow=(2, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=3/3[0m
+[93m[62.79] Suspicious flow on dpid=5 flow=(3, '00:00:00:00:00:04', '00:00:00:00:00:07') counter=1/3[0m
+[93m[62.81] Suspicious flow on dpid=4 flow=(1, '00:00:00:00:00:04', '00:00:00:00:00:07') counter=1/3[0m
+[92m[65.02] Unlocked flow on dpid=5 flow=(3, '00:00:00:00:00:01', '00:00:00:00:00:06')[0m
+[92m[65.02] Unlocked flow on dpid=2 flow=(1, '00:00:00:00:00:01', '00:00:00:00:00:06')[0m
+[92m[65.02] Unlocked flow on dpid=4 flow=(2, '00:00:00:00:00:01', '00:00:00:00:00:06')[0m
+[93m[67.43] Suspicious flow on dpid=5 flow=(3, '00:00:00:00:00:04', '00:00:00:00:00:07') counter=1/3[0m
+[93m[67.44] Suspicious flow on dpid=4 flow=(1, '00:00:00:00:00:04', '00:00:00:00:00:07') counter=1/3[0m
+[93m[69.89] Suspicious flow on dpid=5 flow=(3, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=1/3[0m
+[93m[69.89] Suspicious flow on dpid=2 flow=(1, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=1/3[0m
+[93m[69.90] Suspicious flow on dpid=4 flow=(2, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=1/3[0m
+[93m[72.66] Suspicious flow on dpid=5 flow=(3, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=2/3[0m
+[93m[72.66] Suspicious flow on dpid=2 flow=(1, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=2/3[0m
+[93m[72.68] Suspicious flow on dpid=4 flow=(2, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=2/3[0m
+[91m[75.05] Alarm ON for dpid=5 flow=(3, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=3/3[0m
+[91m[75.05] Blocked flow on dpid=5 flow=(3, '00:00:00:00:00:01', '00:00:00:00:00:06') for 16 seconds[0m
+[91m[75.05] Alarm ON for dpid=2 flow=(1, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=3/3[0m
+[91m[75.06] Blocked flow on dpid=2 flow=(1, '00:00:00:00:00:01', '00:00:00:00:00:06') for 16 seconds[0m
+[91m[75.07] Alarm ON for dpid=4 flow=(2, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=3/3[0m
+[91m[75.07] Blocked flow on dpid=4 flow=(2, '00:00:00:00:00:01', '00:00:00:00:00:06') for 16 seconds[0m
+[93m[75.11] Suspicious flow on dpid=5 flow=(3, '00:00:00:00:00:04', '00:00:00:00:00:07') counter=1/3[0m
+[91m[77.13] Alarm ON for dpid=5 flow=(3, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=3/3[0m
+[91m[77.13] Alarm ON for dpid=2 flow=(1, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=3/3[0m
+[91m[77.14] Alarm ON for dpid=4 flow=(2, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=3/3[0m
+[93m[77.18] Suspicious flow on dpid=5 flow=(3, '00:00:00:00:00:04', '00:00:00:00:00:07') counter=2/3[0m
+[93m[79.13] Suspicious flow on dpid=1 flow=(1, '00:00:00:00:00:02', '00:00:00:00:00:06') counter=1/3[0m
+[93m[79.16] Suspicious flow on dpid=1 flow=(2, '00:00:00:00:00:03', '00:00:00:00:00:10') counter=1/3[0m
+[93m[81.38] Suspicious flow on dpid=5 flow=(3, '00:00:00:00:00:04', '00:00:00:00:00:07') counter=2/3[0m
+[93m[81.40] Suspicious flow on dpid=4 flow=(1, '00:00:00:00:00:04', '00:00:00:00:00:07') counter=1/3[0m
+[93m[87.11] Suspicious flow on dpid=4 flow=(1, '00:00:00:00:00:04', '00:00:00:00:00:07') counter=1/3[0m
+[93m[89.28] Suspicious flow on dpid=5 flow=(3, '00:00:00:00:00:02', '00:00:00:00:00:06') counter=1/3[0m
+[93m[89.35] Suspicious flow on dpid=5 flow=(3, '00:00:00:00:00:04', '00:00:00:00:00:07') counter=1/3[0m
+[93m[89.35] Suspicious flow on dpid=4 flow=(1, '00:00:00:00:00:04', '00:00:00:00:00:07') counter=2/3[0m
+[91m[90.74] Alarm ON for dpid=4 flow=(1, '00:00:00:00:00:04', '00:00:00:00:00:07') counter=3/3[0m
+[91m[90.74] Blocked flow on dpid=4 flow=(1, '00:00:00:00:00:04', '00:00:00:00:00:07') for 4 seconds[0m
+[93m[92.94] Suspicious flow on dpid=1 flow=(1, '00:00:00:00:00:02', '00:00:00:00:00:06') counter=1/3[0m
+[93m[92.97] Suspicious flow on dpid=1 flow=(2, '00:00:00:00:00:03', '00:00:00:00:00:10') counter=1/3[0m
+[92m[93.05] Unlocked flow on dpid=5 flow=(3, '00:00:00:00:00:01', '00:00:00:00:00:06')[0m
+[92m[93.05] Unlocked flow on dpid=2 flow=(1, '00:00:00:00:00:01', '00:00:00:00:00:06')[0m
+[92m[93.05] Unlocked flow on dpid=4 flow=(2, '00:00:00:00:00:01', '00:00:00:00:00:06')[0m
+[92m[95.16] Unlocked flow on dpid=4 flow=(1, '00:00:00:00:00:04', '00:00:00:00:00:07')[0m
+[93m[96.83] Suspicious flow on dpid=5 flow=(3, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=1/3[0m
+[93m[96.83] Suspicious flow on dpid=2 flow=(1, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=1/3[0m
+[93m[96.84] Suspicious flow on dpid=4 flow=(2, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=1/3[0m
+[93m[98.32] Suspicious flow on dpid=5 flow=(3, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=2/3[0m
+[93m[98.32] Suspicious flow on dpid=5 flow=(3, '00:00:00:00:00:02', '00:00:00:00:00:06') counter=1/3[0m
+[93m[98.32] Suspicious flow on dpid=2 flow=(1, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=2/3[0m
+[93m[98.33] Suspicious flow on dpid=4 flow=(2, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=2/3[0m
+[93m[98.37] Suspicious flow on dpid=5 flow=(3, '00:00:00:00:00:04', '00:00:00:00:00:07') counter=1/3[0m
+[93m[98.38] Suspicious flow on dpid=4 flow=(1, '00:00:00:00:00:04', '00:00:00:00:00:07') counter=1/3[0m
+[91m[99.87] Alarm ON for dpid=5 flow=(3, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=3/3[0m
+[91m[99.87] Blocked flow on dpid=5 flow=(3, '00:00:00:00:00:01', '00:00:00:00:00:06') for 30 seconds[0m
+[91m[99.87] Alarm ON for dpid=2 flow=(1, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=3/3[0m
+[91m[99.87] Blocked flow on dpid=2 flow=(1, '00:00:00:00:00:01', '00:00:00:00:00:06') for 30 seconds[0m
+[91m[99.88] Alarm ON for dpid=4 flow=(2, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=3/3[0m
+[91m[99.88] Blocked flow on dpid=4 flow=(2, '00:00:00:00:00:01', '00:00:00:00:00:06') for 30 seconds[0m
+[91m[101.15] Alarm ON for dpid=5 flow=(3, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=3/3[0m
+[91m[101.15] Alarm ON for dpid=2 flow=(1, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=3/3[0m
+[91m[101.16] Alarm ON for dpid=4 flow=(2, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=3/3[0m
+[93m[101.19] Suspicious flow on dpid=5 flow=(3, '00:00:00:00:00:04', '00:00:00:00:00:07') counter=1/3[0m
+[93m[101.19] Suspicious flow on dpid=4 flow=(1, '00:00:00:00:00:04', '00:00:00:00:00:07') counter=1/3[0m
+[93m[102.62] Suspicious flow on dpid=6 flow=(2, '00:00:00:00:00:03', '00:00:00:00:00:10') counter=1/3[0m
+[93m[102.63] Suspicious flow on dpid=6 flow=(2, '00:00:00:00:00:05', '00:00:00:00:00:09') counter=1/3[0m
+[93m[105.85] Suspicious flow on dpid=5 flow=(3, '00:00:00:00:00:04', '00:00:00:00:00:07') counter=1/3[0m
+[93m[105.86] Suspicious flow on dpid=4 flow=(1, '00:00:00:00:00:04', '00:00:00:00:00:07') counter=1/3[0m
+[93m[109.00] Suspicious flow on dpid=5 flow=(3, '00:00:00:00:00:04', '00:00:00:00:00:07') counter=1/3[0m
+[93m[109.01] Suspicious flow on dpid=4 flow=(1, '00:00:00:00:00:04', '00:00:00:00:00:07') counter=1/3[0m
+[93m[112.72] Suspicious flow on dpid=1 flow=(1, '00:00:00:00:00:02', '00:00:00:00:00:06') counter=1/3[0m
+[93m[112.75] Suspicious flow on dpid=1 flow=(2, '00:00:00:00:00:03', '00:00:00:00:00:10') counter=1/3[0m
+[93m[112.79] Suspicious flow on dpid=9 flow=(2, '00:00:00:00:00:05', '00:00:00:00:00:09') counter=1/3[0m
+[93m[112.79] Suspicious flow on dpid=5 flow=(3, '00:00:00:00:00:04', '00:00:00:00:00:07') counter=1/3[0m
+[93m[112.80] Suspicious flow on dpid=4 flow=(1, '00:00:00:00:00:04', '00:00:00:00:00:07') counter=1/3[0m
+[93m[115.86] Suspicious flow on dpid=5 flow=(3, '00:00:00:00:00:04', '00:00:00:00:00:07') counter=1/3[0m
+[93m[115.87] Suspicious flow on dpid=4 flow=(1, '00:00:00:00:00:04', '00:00:00:00:00:07') counter=1/3[0m
+[93m[124.40] Suspicious flow on dpid=1 flow=(1, '00:00:00:00:00:02', '00:00:00:00:00:06') counter=1/3[0m
+[93m[124.41] Suspicious flow on dpid=1 flow=(2, '00:00:00:00:00:03', '00:00:00:00:00:10') counter=1/3[0m
+[93m[127.39] Suspicious flow on dpid=5 flow=(3, '00:00:00:00:00:02', '00:00:00:00:00:06') counter=1/3[0m
+[92m[130.38] Unlocked flow on dpid=5 flow=(3, '00:00:00:00:00:01', '00:00:00:00:00:06')[0m
+[92m[130.38] Unlocked flow on dpid=2 flow=(1, '00:00:00:00:00:01', '00:00:00:00:00:06')[0m
+[92m[130.38] Unlocked flow on dpid=4 flow=(2, '00:00:00:00:00:01', '00:00:00:00:00:06')[0m
+[93m[131.82] Suspicious flow on dpid=1 flow=(2, '00:00:00:00:00:03', '00:00:00:00:00:10') counter=1/3[0m
+[93m[131.82] Suspicious flow on dpid=2 flow=(2, '00:00:00:00:00:03', '00:00:00:00:00:10') counter=1/3[0m
+[93m[145.26] Suspicious flow on dpid=4 flow=(2, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=1/3[0m
+[93m[151.48] Suspicious flow on dpid=5 flow=(3, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=1/3[0m
+[93m[197.43] Suspicious flow on dpid=2 flow=(1, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=1/3[0m
+[93m[237.25] Suspicious flow on dpid=4 flow=(2, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=1/3[0m
+[93m[108.82] Suspicious flow on dpid=4 flow=(2, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=1/3[0m
+[93m[108.82] Suspicious flow on dpid=2 flow=(1, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=1/3[0m
+[93m[108.83] Suspicious flow on dpid=5 flow=(3, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=1/3[0m
+[93m[110.24] Suspicious flow on dpid=4 flow=(2, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=2/3[0m
+[93m[110.25] Suspicious flow on dpid=2 flow=(1, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=2/3[0m
+[93m[110.25] Suspicious flow on dpid=5 flow=(3, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=2/3[0m
+[93m[110.25] Suspicious flow on dpid=1 flow=(1, '00:00:00:00:00:02', '00:00:00:00:00:06') counter=1/3[0m
+[91m[112.07] Alarm ON for dpid=4 flow=(2, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=3/3[0m
+[91m[112.07] Blocked flow on dpid=4 flow=(2, '00:00:00:00:00:01', '00:00:00:00:00:06') for 4 seconds[0m
+[91m[112.08] Alarm ON for dpid=2 flow=(1, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=3/3[0m
+[91m[112.08] Blocked flow on dpid=2 flow=(1, '00:00:00:00:00:01', '00:00:00:00:00:06') for 4 seconds[0m
+[91m[112.08] Alarm ON for dpid=5 flow=(3, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=3/3[0m
+[91m[112.08] Blocked flow on dpid=5 flow=(3, '00:00:00:00:00:01', '00:00:00:00:00:06') for 4 seconds[0m
+[91m[113.48] Alarm ON for dpid=4 flow=(2, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=3/3[0m
+[91m[113.49] Alarm ON for dpid=2 flow=(1, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=3/3[0m
+[91m[113.49] Alarm ON for dpid=5 flow=(3, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=3/3[0m
+[93m[113.55] Suspicious flow on dpid=3 flow=(1, '00:00:00:00:00:05', '00:00:00:00:00:09') counter=1/3[0m
+[93m[114.89] Suspicious flow on dpid=5 flow=(3, '00:00:00:00:00:04', '00:00:00:00:00:07') counter=1/3[0m
+[93m[114.89] Suspicious flow on dpid=4 flow=(1, '00:00:00:00:00:04', '00:00:00:00:00:07') counter=1/3[0m
+[92m[116.41] Unlocked flow on dpid=4 flow=(2, '00:00:00:00:00:01', '00:00:00:00:00:06')[0m
+[92m[116.41] Unlocked flow on dpid=2 flow=(1, '00:00:00:00:00:01', '00:00:00:00:00:06')[0m
+[92m[116.41] Unlocked flow on dpid=5 flow=(3, '00:00:00:00:00:01', '00:00:00:00:00:06')[0m
+[93m[118.11] Suspicious flow on dpid=3 flow=(1, '00:00:00:00:00:05', '00:00:00:00:00:09') counter=1/3[0m
+[93m[119.65] Suspicious flow on dpid=4 flow=(2, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=1/3[0m
+[93m[119.65] Suspicious flow on dpid=2 flow=(1, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=1/3[0m
+[93m[119.66] Suspicious flow on dpid=5 flow=(3, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=1/3[0m
+[93m[119.70] Suspicious flow on dpid=5 flow=(3, '00:00:00:00:00:04', '00:00:00:00:00:07') counter=1/3[0m
+[93m[119.70] Suspicious flow on dpid=4 flow=(1, '00:00:00:00:00:04', '00:00:00:00:00:07') counter=1/3[0m
+[93m[121.15] Suspicious flow on dpid=4 flow=(2, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=2/3[0m
+[93m[121.15] Suspicious flow on dpid=2 flow=(1, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=2/3[0m
+[93m[121.16] Suspicious flow on dpid=5 flow=(3, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=2/3[0m
+[93m[121.21] Suspicious flow on dpid=9 flow=(2, '00:00:00:00:00:05', '00:00:00:00:00:09') counter=1/3[0m
+[91m[122.75] Alarm ON for dpid=4 flow=(2, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=3/3[0m
+[91m[122.75] Blocked flow on dpid=4 flow=(2, '00:00:00:00:00:01', '00:00:00:00:00:06') for 16 seconds[0m
+[91m[122.76] Alarm ON for dpid=2 flow=(1, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=3/3[0m
+[91m[122.76] Blocked flow on dpid=2 flow=(1, '00:00:00:00:00:01', '00:00:00:00:00:06') for 16 seconds[0m
+[91m[122.77] Alarm ON for dpid=5 flow=(3, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=3/3[0m
+[91m[122.78] Blocked flow on dpid=5 flow=(3, '00:00:00:00:00:01', '00:00:00:00:00:06') for 16 seconds[0m
+[93m[122.83] Suspicious flow on dpid=5 flow=(3, '00:00:00:00:00:04', '00:00:00:00:00:07') counter=1/3[0m
+[93m[122.83] Suspicious flow on dpid=4 flow=(1, '00:00:00:00:00:04', '00:00:00:00:00:07') counter=1/3[0m
+[91m[124.34] Alarm ON for dpid=4 flow=(2, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=3/3[0m
+[91m[124.35] Alarm ON for dpid=2 flow=(1, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=3/3[0m
+[91m[124.35] Alarm ON for dpid=5 flow=(3, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=3/3[0m
+[93m[126.12] Suspicious flow on dpid=5 flow=(3, '00:00:00:00:00:04', '00:00:00:00:00:07') counter=1/3[0m
+[93m[126.12] Suspicious flow on dpid=4 flow=(1, '00:00:00:00:00:04', '00:00:00:00:00:07') counter=1/3[0m
+[93m[129.14] Suspicious flow on dpid=5 flow=(3, '00:00:00:00:00:04', '00:00:00:00:00:07') counter=1/3[0m
+[93m[129.14] Suspicious flow on dpid=4 flow=(1, '00:00:00:00:00:04', '00:00:00:00:00:07') counter=1/3[0m
+[93m[130.39] Suspicious flow on dpid=9 flow=(2, '00:00:00:00:00:05', '00:00:00:00:00:09') counter=1/3[0m
+[93m[133.84] Suspicious flow on dpid=5 flow=(3, '00:00:00:00:00:02', '00:00:00:00:00:06') counter=1/3[0m
+[93m[133.87] Suspicious flow on dpid=5 flow=(3, '00:00:00:00:00:04', '00:00:00:00:00:07') counter=1/3[0m
+[93m[133.88] Suspicious flow on dpid=4 flow=(1, '00:00:00:00:00:04', '00:00:00:00:00:07') counter=1/3[0m
+[93m[138.10] Suspicious flow on dpid=5 flow=(3, '00:00:00:00:00:04', '00:00:00:00:00:07') counter=1/3[0m
+[93m[138.10] Suspicious flow on dpid=4 flow=(1, '00:00:00:00:00:04', '00:00:00:00:00:07') counter=1/3[0m
+[93m[140.35] Suspicious flow on dpid=6 flow=(2, '00:00:00:00:00:03', '00:00:00:00:00:10') counter=1/3[0m
+[93m[140.36] Suspicious flow on dpid=5 flow=(3, '00:00:00:00:00:04', '00:00:00:00:00:07') counter=2/3[0m
+[93m[140.36] Suspicious flow on dpid=4 flow=(1, '00:00:00:00:00:04', '00:00:00:00:00:07') counter=2/3[0m
+[93m[140.39] Suspicious flow on dpid=6 flow=(2, '00:00:00:00:00:05', '00:00:00:00:00:09') counter=1/3[0m
+[92m[140.43] Unlocked flow on dpid=4 flow=(2, '00:00:00:00:00:01', '00:00:00:00:00:06')[0m
+[92m[140.43] Unlocked flow on dpid=2 flow=(1, '00:00:00:00:00:01', '00:00:00:00:00:06')[0m
+[92m[140.43] Unlocked flow on dpid=5 flow=(3, '00:00:00:00:00:01', '00:00:00:00:00:06')[0m
+[93m[142.22] Suspicious flow on dpid=1 flow=(1, '00:00:00:00:00:02', '00:00:00:00:00:06') counter=1/3[0m
+[93m[142.24] Suspicious flow on dpid=1 flow=(2, '00:00:00:00:00:03', '00:00:00:00:00:10') counter=1/3[0m
+[93m[144.18] Suspicious flow on dpid=4 flow=(2, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=1/3[0m
+[93m[144.18] Suspicious flow on dpid=2 flow=(1, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=1/3[0m
+[93m[144.18] Suspicious flow on dpid=5 flow=(3, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=1/3[0m
+[93m[144.22] Suspicious flow on dpid=4 flow=(1, '00:00:00:00:00:04', '00:00:00:00:00:07') counter=2/3[0m
+[93m[146.38] Suspicious flow on dpid=4 flow=(2, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=2/3[0m
+[93m[146.38] Suspicious flow on dpid=2 flow=(1, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=2/3[0m
+[93m[146.38] Suspicious flow on dpid=5 flow=(3, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=2/3[0m
+[91m[148.49] Alarm ON for dpid=4 flow=(2, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=3/3[0m
+[91m[148.50] Blocked flow on dpid=4 flow=(2, '00:00:00:00:00:01', '00:00:00:00:00:06') for 30 seconds[0m
+[91m[148.51] Alarm ON for dpid=2 flow=(1, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=3/3[0m
+[91m[148.51] Blocked flow on dpid=2 flow=(1, '00:00:00:00:00:01', '00:00:00:00:00:06') for 30 seconds[0m
+[91m[148.52] Alarm ON for dpid=5 flow=(3, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=3/3[0m
+[91m[148.52] Blocked flow on dpid=5 flow=(3, '00:00:00:00:00:01', '00:00:00:00:00:06') for 30 seconds[0m
+[93m[148.57] Suspicious flow on dpid=4 flow=(1, '00:00:00:00:00:04', '00:00:00:00:00:07') counter=2/3[0m
+[91m[150.99] Alarm ON for dpid=4 flow=(2, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=3/3[0m
+[91m[151.00] Alarm ON for dpid=2 flow=(1, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=3/3[0m
+[91m[151.01] Alarm ON for dpid=5 flow=(3, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=3/3[0m
+[93m[154.86] Suspicious flow on dpid=5 flow=(3, '00:00:00:00:00:04', '00:00:00:00:00:07') counter=1/3[0m
+[93m[154.86] Suspicious flow on dpid=4 flow=(1, '00:00:00:00:00:04', '00:00:00:00:00:07') counter=1/3[0m
+[93m[154.91] Suspicious flow on dpid=9 flow=(2, '00:00:00:00:00:05', '00:00:00:00:00:09') counter=1/3[0m
+[93m[159.83] Suspicious flow on dpid=6 flow=(2, '00:00:00:00:00:03', '00:00:00:00:00:10') counter=1/3[0m
+[93m[159.84] Suspicious flow on dpid=5 flow=(3, '00:00:00:00:00:04', '00:00:00:00:00:07') counter=1/3[0m
+[93m[159.84] Suspicious flow on dpid=4 flow=(1, '00:00:00:00:00:04', '00:00:00:00:00:07') counter=1/3[0m
+[93m[159.90] Suspicious flow on dpid=6 flow=(2, '00:00:00:00:00:05', '00:00:00:00:00:09') counter=1/3[0m
+[93m[166.79] Suspicious flow on dpid=2 flow=(2, '00:00:00:00:00:02', '00:00:00:00:00:06') counter=1/3[0m
+[93m[166.81] Suspicious flow on dpid=5 flow=(3, '00:00:00:00:00:04', '00:00:00:00:00:07') counter=1/3[0m
+[93m[166.82] Suspicious flow on dpid=2 flow=(2, '00:00:00:00:00:03', '00:00:00:00:00:10') counter=1/3[0m
+[93m[166.82] Suspicious flow on dpid=7 flow=(3, '00:00:00:00:00:03', '00:00:00:00:00:10') counter=1/3[0m
+[92m[179.30] Unlocked flow on dpid=4 flow=(2, '00:00:00:00:00:01', '00:00:00:00:00:06')[0m
+[92m[179.30] Unlocked flow on dpid=2 flow=(1, '00:00:00:00:00:01', '00:00:00:00:00:06')[0m
+[92m[179.31] Unlocked flow on dpid=5 flow=(3, '00:00:00:00:00:01', '00:00:00:00:00:06')[0m
+[93m[182.51] Suspicious flow on dpid=1 flow=(1, '00:00:00:00:00:02', '00:00:00:00:00:06') counter=1/3[0m
+[93m[189.43] Suspicious flow on dpid=4 flow=(2, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=1/3[0m
+[93m[196.29] Suspicious flow on dpid=4 flow=(2, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=1/3[0m
+[93m[196.30] Suspicious flow on dpid=2 flow=(1, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=1/3[0m
+[93m[196.30] Suspicious flow on dpid=5 flow=(3, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=1/3[0m
+[93m[198.47] Suspicious flow on dpid=4 flow=(2, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=2/3[0m
+[93m[198.48] Suspicious flow on dpid=2 flow=(1, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=2/3[0m
+[93m[198.48] Suspicious flow on dpid=5 flow=(3, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=2/3[0m
+[93m[201.60] Suspicious flow on dpid=4 flow=(2, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=2/3[0m
+[93m[201.61] Suspicious flow on dpid=5 flow=(3, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=2/3[0m
+[93m[59.41] Suspicious flow on dpid=2 flow=(1, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=1/3[0m
+[93m[59.42] Suspicious flow on dpid=4 flow=(2, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=1/3[0m
+[93m[59.43] Suspicious flow on dpid=5 flow=(3, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=1/3[0m
+[93m[61.11] Suspicious flow on dpid=2 flow=(1, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=2/3[0m
+[93m[61.12] Suspicious flow on dpid=4 flow=(2, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=2/3[0m
+[93m[61.13] Suspicious flow on dpid=5 flow=(3, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=2/3[0m
+[91m[62.87] Alarm ON for dpid=2 flow=(1, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=3/3[0m
+[91m[62.87] Blocked flow on dpid=2 flow=(1, '00:00:00:00:00:01', '00:00:00:00:00:06') for 4 seconds[0m
+[91m[62.88] Alarm ON for dpid=4 flow=(2, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=3/3[0m
+[91m[62.88] Blocked flow on dpid=4 flow=(2, '00:00:00:00:00:01', '00:00:00:00:00:06') for 4 seconds[0m
+[91m[62.89] Alarm ON for dpid=5 flow=(3, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=3/3[0m
+[91m[62.89] Blocked flow on dpid=5 flow=(3, '00:00:00:00:00:01', '00:00:00:00:00:06') for 4 seconds[0m
+[91m[64.70] Alarm ON for dpid=2 flow=(1, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=3/3[0m
+[91m[64.71] Alarm ON for dpid=4 flow=(2, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=3/3[0m
+[91m[64.71] Alarm ON for dpid=5 flow=(3, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=3/3[0m
+[92m[68.40] Unlocked flow on dpid=2 flow=(1, '00:00:00:00:00:01', '00:00:00:00:00:06')[0m
+[92m[68.40] Unlocked flow on dpid=4 flow=(2, '00:00:00:00:00:01', '00:00:00:00:00:06')[0m
+[92m[68.40] Unlocked flow on dpid=5 flow=(3, '00:00:00:00:00:01', '00:00:00:00:00:06')[0m
+[93m[70.20] Suspicious flow on dpid=5 flow=(3, '00:00:00:00:00:04', '00:00:00:00:00:07') counter=1/3[0m
+[93m[72.28] Suspicious flow on dpid=2 flow=(1, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=1/3[0m
+[93m[72.30] Suspicious flow on dpid=4 flow=(2, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=1/3[0m
+[93m[72.30] Suspicious flow on dpid=5 flow=(3, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=1/3[0m
+[93m[74.66] Suspicious flow on dpid=2 flow=(1, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=2/3[0m
+[93m[74.67] Suspicious flow on dpid=4 flow=(2, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=2/3[0m
+[93m[74.68] Suspicious flow on dpid=5 flow=(3, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=2/3[0m
+[91m[77.93] Alarm ON for dpid=2 flow=(1, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=3/3[0m
+[91m[77.93] Blocked flow on dpid=2 flow=(1, '00:00:00:00:00:01', '00:00:00:00:00:06') for 16 seconds[0m
+[91m[77.94] Alarm ON for dpid=4 flow=(2, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=3/3[0m
+[91m[77.94] Blocked flow on dpid=4 flow=(2, '00:00:00:00:00:01', '00:00:00:00:00:06') for 16 seconds[0m
+[91m[77.94] Alarm ON for dpid=5 flow=(3, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=3/3[0m
+[91m[77.94] Blocked flow on dpid=5 flow=(3, '00:00:00:00:00:01', '00:00:00:00:00:06') for 16 seconds[0m
+[93m[77.99] Suspicious flow on dpid=4 flow=(1, '00:00:00:00:00:04', '00:00:00:00:00:07') counter=1/3[0m
+[93m[78.00] Suspicious flow on dpid=5 flow=(3, '00:00:00:00:00:04', '00:00:00:00:00:07') counter=1/3[0m
+[91m[79.74] Alarm ON for dpid=2 flow=(1, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=3/3[0m
+[91m[79.75] Alarm ON for dpid=4 flow=(2, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=3/3[0m
+[91m[79.75] Alarm ON for dpid=5 flow=(3, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=3/3[0m
+[93m[85.48] Suspicious flow on dpid=4 flow=(1, '00:00:00:00:00:04', '00:00:00:00:00:07') counter=1/3[0m
+[93m[85.50] Suspicious flow on dpid=5 flow=(3, '00:00:00:00:00:04', '00:00:00:00:00:07') counter=1/3[0m
+[93m[92.25] Suspicious flow on dpid=4 flow=(1, '00:00:00:00:00:04', '00:00:00:00:00:07') counter=1/3[0m
+[92m[94.12] Unlocked flow on dpid=2 flow=(1, '00:00:00:00:00:01', '00:00:00:00:00:06')[0m
+[92m[94.12] Unlocked flow on dpid=4 flow=(2, '00:00:00:00:00:01', '00:00:00:00:00:06')[0m
+[92m[94.12] Unlocked flow on dpid=5 flow=(3, '00:00:00:00:00:01', '00:00:00:00:00:06')[0m
+[93m[96.11] Suspicious flow on dpid=4 flow=(1, '00:00:00:00:00:04', '00:00:00:00:00:07') counter=1/3[0m
+[93m[96.12] Suspicious flow on dpid=5 flow=(3, '00:00:00:00:00:04', '00:00:00:00:00:07') counter=1/3[0m
+[93m[98.70] Suspicious flow on dpid=2 flow=(1, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=1/3[0m
+[93m[98.71] Suspicious flow on dpid=4 flow=(2, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=1/3[0m
+[93m[98.72] Suspicious flow on dpid=5 flow=(3, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=1/3[0m
+[93m[98.77] Suspicious flow on dpid=5 flow=(3, '00:00:00:00:00:04', '00:00:00:00:00:07') counter=2/3[0m
+[93m[100.68] Suspicious flow on dpid=2 flow=(1, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=2/3[0m
+[93m[100.69] Suspicious flow on dpid=4 flow=(2, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=2/3[0m
+[93m[100.70] Suspicious flow on dpid=5 flow=(3, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=2/3[0m
+[91m[103.08] Alarm ON for dpid=2 flow=(1, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=3/3[0m
+[91m[103.08] Blocked flow on dpid=2 flow=(1, '00:00:00:00:00:01', '00:00:00:00:00:06') for 30 seconds[0m
+[91m[103.10] Alarm ON for dpid=4 flow=(2, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=3/3[0m
+[91m[103.10] Blocked flow on dpid=4 flow=(2, '00:00:00:00:00:01', '00:00:00:00:00:06') for 30 seconds[0m
+[91m[103.11] Alarm ON for dpid=5 flow=(3, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=3/3[0m
+[91m[103.11] Blocked flow on dpid=5 flow=(3, '00:00:00:00:00:01', '00:00:00:00:00:06') for 30 seconds[0m
+[93m[103.14] Suspicious flow on dpid=4 flow=(1, '00:00:00:00:00:04', '00:00:00:00:00:07') counter=1/3[0m
+[93m[103.15] Suspicious flow on dpid=5 flow=(3, '00:00:00:00:00:04', '00:00:00:00:00:07') counter=2/3[0m
+[91m[104.72] Alarm ON for dpid=2 flow=(1, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=3/3[0m
+[91m[104.73] Alarm ON for dpid=4 flow=(2, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=3/3[0m
+[91m[104.74] Alarm ON for dpid=5 flow=(3, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=3/3[0m
+[93m[109.85] Suspicious flow on dpid=4 flow=(1, '00:00:00:00:00:04', '00:00:00:00:00:07') counter=1/3[0m
+[93m[109.87] Suspicious flow on dpid=5 flow=(3, '00:00:00:00:00:04', '00:00:00:00:00:07') counter=1/3[0m
+[93m[114.49] Suspicious flow on dpid=4 flow=(1, '00:00:00:00:00:04', '00:00:00:00:00:07') counter=1/3[0m
+[93m[116.48] Suspicious flow on dpid=4 flow=(1, '00:00:00:00:00:04', '00:00:00:00:00:07') counter=2/3[0m
+[93m[116.49] Suspicious flow on dpid=5 flow=(3, '00:00:00:00:00:04', '00:00:00:00:00:07') counter=1/3[0m
+[93m[124.13] Suspicious flow on dpid=9 flow=(2, '00:00:00:00:00:05', '00:00:00:00:00:09') counter=1/3[0m
+[93m[128.73] Suspicious flow on dpid=2 flow=(2, '00:00:00:00:00:02', '00:00:00:00:00:06') counter=1/3[0m
+[93m[128.81] Suspicious flow on dpid=3 flow=(1, '00:00:00:00:00:05', '00:00:00:00:00:09') counter=1/3[0m
+[93m[128.82] Suspicious flow on dpid=2 flow=(2, '00:00:00:00:00:03', '00:00:00:00:00:10') counter=1/3[0m
+[93m[130.39] Suspicious flow on dpid=1 flow=(1, '00:00:00:00:00:02', '00:00:00:00:00:06') counter=1/3[0m
+[93m[130.41] Suspicious flow on dpid=5 flow=(3, '00:00:00:00:00:02', '00:00:00:00:00:06') counter=1/3[0m
+[92m[133.19] Unlocked flow on dpid=2 flow=(1, '00:00:00:00:00:01', '00:00:00:00:00:06')[0m
+[92m[133.19] Unlocked flow on dpid=4 flow=(2, '00:00:00:00:00:01', '00:00:00:00:00:06')[0m
+[92m[133.19] Unlocked flow on dpid=5 flow=(3, '00:00:00:00:00:01', '00:00:00:00:00:06')[0m
+[93m[135.27] Suspicious flow on dpid=7 flow=(3, '00:00:00:00:00:03', '00:00:00:00:00:10') counter=1/3[0m
+[93m[205.68] Suspicious flow on dpid=5 flow=(3, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=1/3[0m
+[93m[205.68] Suspicious flow on dpid=2 flow=(1, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=1/3[0m
+[93m[205.69] Suspicious flow on dpid=4 flow=(2, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=1/3[0m
+[93m[205.74] Suspicious flow on dpid=6 flow=(2, '00:00:00:00:00:03', '00:00:00:00:00:10') counter=1/3[0m
+[93m[205.75] Suspicious flow on dpid=6 flow=(2, '00:00:00:00:00:05', '00:00:00:00:00:09') counter=1/3[0m
+[93m[208.33] Suspicious flow on dpid=5 flow=(3, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=2/3[0m
+[93m[208.33] Suspicious flow on dpid=2 flow=(1, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=2/3[0m
+[93m[208.33] Suspicious flow on dpid=4 flow=(2, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=2/3[0m
+[93m[208.37] Suspicious flow on dpid=5 flow=(3, '00:00:00:00:00:04', '00:00:00:00:00:07') counter=1/3[0m
+[93m[208.38] Suspicious flow on dpid=4 flow=(1, '00:00:00:00:00:04', '00:00:00:00:00:07') counter=1/3[0m
+[91m[210.93] Alarm ON for dpid=5 flow=(3, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=3/3[0m
+[91m[210.93] Blocked flow on dpid=5 flow=(3, '00:00:00:00:00:01', '00:00:00:00:00:06') for 4 seconds[0m
+[91m[210.94] Alarm ON for dpid=2 flow=(1, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=3/3[0m
+[91m[210.94] Blocked flow on dpid=2 flow=(1, '00:00:00:00:00:01', '00:00:00:00:00:06') for 4 seconds[0m
+[91m[210.95] Alarm ON for dpid=4 flow=(2, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=3/3[0m
+[91m[210.95] Blocked flow on dpid=4 flow=(2, '00:00:00:00:00:01', '00:00:00:00:00:06') for 4 seconds[0m
+[91m[215.63] Alarm ON for dpid=5 flow=(3, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=3/3[0m
+[91m[215.64] Alarm ON for dpid=2 flow=(1, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=3/3[0m
+[91m[215.66] Alarm ON for dpid=4 flow=(2, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=3/3[0m
+[92m[215.82] Unlocked flow on dpid=5 flow=(3, '00:00:00:00:00:01', '00:00:00:00:00:06')[0m
+[92m[215.82] Unlocked flow on dpid=2 flow=(1, '00:00:00:00:00:01', '00:00:00:00:00:06')[0m
+[92m[215.82] Unlocked flow on dpid=4 flow=(2, '00:00:00:00:00:01', '00:00:00:00:00:06')[0m
+[93m[218.86] Suspicious flow on dpid=5 flow=(3, '00:00:00:00:00:04', '00:00:00:00:00:07') counter=1/3[0m
+[93m[218.87] Suspicious flow on dpid=4 flow=(1, '00:00:00:00:00:04', '00:00:00:00:00:07') counter=1/3[0m
+[93m[221.61] Suspicious flow on dpid=5 flow=(3, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=2/3[0m
+[93m[221.61] Suspicious flow on dpid=2 flow=(1, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=2/3[0m
+[93m[221.62] Suspicious flow on dpid=4 flow=(2, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=2/3[0m
+[91m[223.84] Alarm ON for dpid=5 flow=(3, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=3/3[0m
+[91m[223.84] Blocked flow on dpid=5 flow=(3, '00:00:00:00:00:01', '00:00:00:00:00:06') for 16 seconds[0m
+[91m[223.84] Alarm ON for dpid=2 flow=(1, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=3/3[0m
+[91m[223.84] Blocked flow on dpid=2 flow=(1, '00:00:00:00:00:01', '00:00:00:00:00:06') for 16 seconds[0m
+[91m[223.84] Alarm ON for dpid=4 flow=(2, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=3/3[0m
+[91m[223.85] Blocked flow on dpid=4 flow=(2, '00:00:00:00:00:01', '00:00:00:00:00:06') for 16 seconds[0m
+[91m[226.90] Alarm ON for dpid=5 flow=(3, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=3/3[0m
+[91m[226.90] Alarm ON for dpid=2 flow=(1, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=3/3[0m
+[91m[226.91] Alarm ON for dpid=4 flow=(2, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=3/3[0m
+[93m[226.95] Suspicious flow on dpid=5 flow=(3, '00:00:00:00:00:04', '00:00:00:00:00:07') counter=1/3[0m
+[92m[241.62] Unlocked flow on dpid=5 flow=(3, '00:00:00:00:00:01', '00:00:00:00:00:06')[0m
+[92m[241.62] Unlocked flow on dpid=2 flow=(1, '00:00:00:00:00:01', '00:00:00:00:00:06')[0m
+[92m[241.62] Unlocked flow on dpid=4 flow=(2, '00:00:00:00:00:01', '00:00:00:00:00:06')[0m
+[93m[248.34] Suspicious flow on dpid=5 flow=(3, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=1/3[0m
+[93m[252.90] Suspicious flow on dpid=2 flow=(1, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=1/3[0m
+[93m[252.91] Suspicious flow on dpid=4 flow=(2, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=1/3[0m
+[93m[252.99] Suspicious flow on dpid=3 flow=(1, '00:00:00:00:00:05', '00:00:00:00:00:09') counter=1/3[0m
+[93m[261.68] Suspicious flow on dpid=5 flow=(3, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=1/3[0m
+[93m[261.68] Suspicious flow on dpid=2 flow=(1, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=1/3[0m
+[93m[261.69] Suspicious flow on dpid=4 flow=(2, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=1/3[0m
+[93m[272.73] Suspicious flow on dpid=2 flow=(1, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=1/3[0m
+[93m[272.74] Suspicious flow on dpid=4 flow=(2, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=1/3[0m
+[93m[287.99] Suspicious flow on dpid=5 flow=(3, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=1/3[0m
+[93m[288.03] Suspicious flow on dpid=4 flow=(2, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=1/3[0m
+[93m[291.46] Suspicious flow on dpid=5 flow=(3, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=2/3[0m
+[93m[291.46] Suspicious flow on dpid=2 flow=(1, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=1/3[0m
+[93m[291.47] Suspicious flow on dpid=4 flow=(2, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=2/3[0m
+[93m[322.37] Suspicious flow on dpid=2 flow=(1, '00:00:00:00:00:01', '00:00:00:00:00:06') counter=1/3[0m
